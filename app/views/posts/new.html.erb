@@ -1,16 +1,16 @@
-<h2>Editing "<%= @post.title %>"</h2>
-<%= form_tag post_path(@post), method: "patch" do %>
+<h2>Create a Post</h2>
+<%= form_tag posts_path, method: "post" do %>
 
-  <% if @post.errors.any? %>
-  <div id="error_explanation">
-    <h2>There were some errors:</h2>
-    <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+  <%  if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors:</h2>
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="field <%= ' field_with_errors' if @post.errors[:title].any? %>">
     <%= label_tag "title", "Title" %>
@@ -30,8 +30,8 @@
   <div class="field<%= ' field_with_errors' if @post.errors[:content].any? %>">
     <%= label_tag "content", "Content" %>
     <br />
-    <%= text_area_tag "content", @post.content %>
+    <%= text_field_tag "content", @post.content %>
   </div>
-  <%= submit_tag "Update" %>
-<% end %>
 
+  <%= submit_tag "Create" %>
+<% end %>
